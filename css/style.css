@@ -5,26 +5,27 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0;
+  /* margin: 0; */
   height: 100vh;
 }
 
-section#guess-board {
+#guess-board {
   width: 398px;
   height: 498px;
   display: grid;
   grid-template-rows: repeat(6, 1fr);
   padding: 10px;
   grid-gap: 10px;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 #guess-row-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 5px;
 }
-div {
+div#guess-row {
   display: block;
   border: 1px solid white;
   text-align: center;
 }
+
