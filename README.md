@@ -16,3 +16,17 @@ Pseudocode:
 	10. ???
 	11. Profit?
 Create Reset functionality!
+
+
+Credits
+word list:
+https://www-cs-faculty.stanford.edu/~knuth/sgb-words.txt
+
+confetti:
+SEI Remote Github
+
+Animation:
+Animate.css
+
+Styling:
+getbootstrap.com

@@ -8,11 +8,13 @@ body{
   margin: 0;
   /* height: 100vh; */
 }
+
 h1 {
   margin: 12px 0;
   padding: 12px;
   text-align: center;
 }
+
 #guess-board {
   width: 398px;
   height: 498px;
@@ -22,11 +24,13 @@ h1 {
   grid-gap: 10px;
   /* box-sizing: border-box; */
 }
+
 #guess-row-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 5px;
 }
+
 div#guess-row {
   height: auto;
   display: block;
