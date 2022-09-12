@@ -39,7 +39,9 @@ function init() {
   })
 
   keyboard.forEach((key)=>{
-    key.className = 'btn btn-secondary'
+    if (key.id !== 'delete' && key.id !== 'enter'){
+      key.className = 'btn btn-secondary'
+    }
   })
 
   boardMessage.textContent = "Good Luck!"
