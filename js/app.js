@@ -13,6 +13,7 @@ const lightDarkBtn = document.querySelector("#light-dark-mode")
 const guessRows = document. querySelectorAll("div#guess-row-container")
 const keyboard = document.querySelector("#key-board-container")
 const resetBtn = document.querySelector("#resetButton")
+const boardMessage = document.getElementById('message')
 /*----------------------------- Event Listeners -----------------------------*/
 
 
@@ -41,13 +42,13 @@ function init() {
 
 
 function handleClick(evt){
-  if(alphabet.includes(evt.target.id))
+  if((evt.target.id !== 'enter' || evt.target.id !== 'delete') && isLetter(evt.target.id))
   console.log(evt.target.id)
 
 }
 
 function handleTyping(evt){
-  if(alphabet.includes(evt.key.toLowerCase())){
+  if(isLetter(evt.key)){
 
     if (guessArr.length < 5) {
       guessArr.push(evt.key.toLowerCase())
@@ -59,6 +60,21 @@ function handleTyping(evt){
     } 
   }
 }
+
+function isLetter(letter){
+  if(alphabet.includes(letter.toLowerCase())){
+    return true
+  } else {
+    boardMessage.textContent = "Please enter letters"
+    boardMessage.classList.add('animate__animated', 'animate__shakeX')
+  }
+  
+}
+
+
+
+
+
 
 function getWordToGuess() {
   return allWords[Math.floor(Math.random() * allWords.length - 1)]
