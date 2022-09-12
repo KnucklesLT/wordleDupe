@@ -61,7 +61,7 @@ function handleClick(evt){
       letterColumn++
     }
   }
-  if(guessArr.length === 5){
+  if(guessArr.length === 5 && evt.target.id === 'enter'){
     guessWord = guessArr.join('')
     if(realWord(guessWord)) {
       compareWords()
@@ -112,6 +112,36 @@ function deleteLetter(){
 }
 
 
+function compareWords(){
+  renderWinOrLoss()
+
+  for (let i = 0; i< wordToGuess.length; i++){
+    if(wordToGuess[i] === guessWord[i]){
+      guessRows[rows].children[i].style.backgroundColor = 'green'
+      
+      document.querySelector(`#${guessWord[i]}`).classList.remove('btn-secondary')
+      document.querySelector(`#${guessWord[i]}`).classList.add('btn-success')
+      
+    } else if (wordToGuess.includes(guessWord[i])){
+      guessRows[rows].children[i].style.backgroundColor = '#FFD300'
+      
+      document.querySelector(`#${guessWord[i]}`).classList.remove('btn-secondary')
+      document.querySelector(`#${guessWord[i]}`).classList.add('btn-warning')
+    } else {
+      document.querySelector(`#${guessWord[i]}`).classList.remove('btn-secondary')
+      document.querySelector(`#${guessWord[i]}`).classList.add('btn-dark')
+    }
+  }
+}
+
+function renderWinOrLoss(){
+  if (wordToGuess === guessWord){
+    confetti.start(2000)
+  } else if (attempts === 6 && wordToGuess !== guessWord){
+    boardMessage.textContent = 'Better Luck Next Time!'
+  }
+}
+
 function getWordToGuess() {
   return allWords[Math.floor(Math.random() * allWords.length - 1)]
 }
@@ -119,26 +149,6 @@ function getWordToGuess() {
 function realWord(word) {
   return allWords.includes(word.toLowerCase())
 }
-
-
-function compareWords(){
-  for (let i = 0; i< wordToGuess.length; i++){
-    if(wordToGuess[i] === guessWord[i]){
-      guessRows[rows].children[i].style.backgroundColor = 'green'
-      
-      document.querySelector(`#${guessWord[i]}`).classList.remove('btn-secondary')
-      document.querySelector(`#${guessWord[i]}`).classList.add('btn-success')
-
-    } else if (wordToGuess.includes(guessWord[i])){
-      guessRows[rows].children[i].style.backgroundColor = '#FFD300'
-
-      document.querySelector(`#${guessWord[i]}`).classList.remove('btn-secondary')
-      document.querySelector(`#${guessWord[i]}`).classList.add('btn-warning')
-    }
-  }
-}
-
-
 // function toggleLightDark() {
 //   confetti.start(2000)
 //   body.className = body.className === "dark" ? "" : "dark"
