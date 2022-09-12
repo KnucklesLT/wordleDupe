@@ -126,11 +126,14 @@ function compareWords(){
     if(wordToGuess[i] === guessWord[i]){
       guessRows[rows].children[i].style.backgroundColor = 'green'
       
-      document.querySelector(`#${wordToGuess[i]}`).classList.remove('btn-secondary')
-      document.querySelector(`#${wordToGuess[i]}`).classList.add('btn-success')
+      document.querySelector(`#${guessWord[i]}`).classList.remove('btn-secondary')
+      document.querySelector(`#${guessWord[i]}`).classList.add('btn-success')
 
     } else if (wordToGuess.includes(guessWord[i])){
       guessRows[rows].children[i].style.backgroundColor = '#FFD300'
+
+      document.querySelector(`#${guessWord[i]}`).classList.remove('btn-secondary')
+      document.querySelector(`#${guessWord[i]}`).classList.add('btn-warning')
     }
   }
 }
