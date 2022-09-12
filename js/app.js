@@ -42,8 +42,9 @@ function init() {
     key.className = 'btn btn-secondary'
   })
 
+  boardMessage.textContent = "Good Luck!"
   wordToGuess = getWordToGuess()
-  attempts = 0
+  attempts = 1
   rows=0
   letterColumn=0
   guessArr = []
@@ -68,6 +69,7 @@ function handleClick(evt){
       rows++
       attempts++
     }
+    guessArr= []
   } 
 }
 
@@ -86,6 +88,8 @@ function handleTyping(evt){
         compareWords()
         rows++
         attempts++
+        letterColumn = 0
+        guessArr = []
       }
     } 
   }
@@ -137,6 +141,7 @@ function compareWords(){
 function renderWinOrLoss(){
   if (wordToGuess === guessWord){
     confetti.start(2000)
+    boardMessage.textContent = attempts === 1 ? 'It took one attempt' : `It took ${attempts} attempts`
   } else if (attempts === 6 && wordToGuess !== guessWord){
     boardMessage.textContent = 'Better Luck Next Time!'
   }
