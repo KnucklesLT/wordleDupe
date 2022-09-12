@@ -21,7 +21,6 @@ Create Reset functionality!
 Credits
 word list:
 https://www-cs-faculty.stanford.edu/~knuth/sgb-words.txt
-for
 
 confetti:
 SEI Remote Github

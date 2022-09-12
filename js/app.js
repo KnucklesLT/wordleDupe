@@ -4,7 +4,7 @@ const alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 /*-------------------------------- Variables --------------------------------*/
 let guessArr = []
-let guessWord
+let guessWord, wordToGuess, rows, letters
 
 
 
@@ -13,13 +13,15 @@ let guessWord
 const lightDarkBtn = document.querySelector("#light-dark-mode")
 const guessRows = document. querySelectorAll("div#guess-row-container")
 const keyboard = document.querySelector("#key-board-container")
-const resetBtn = document.querySelector("#resetBtn")
+const resetBtn = document.querySelector("#resetButton")
 /*----------------------------- Event Listeners -----------------------------*/
 
 
 // lightDarkBtn.addEventListener('click', toggleLightDark)
+resetBtn.addEventListener('click',init)
 
 keyboard.addEventListener('click', handleClick)
+
 document.addEventListener('keydown', (evt)=>{
   if (guessArr.length < 5) {
     guessArr.push(evt.key.toLowerCase())
@@ -32,13 +34,24 @@ document.addEventListener('keydown', (evt)=>{
 })
 /*-------------------------------- Functions --------------------------------*/
 
-// console.log(typeof wordList);
+init()
+
+function init() {
+  guessRows.forEach((row,idx)=> {
+    for (let i =0; i<5; i++){
+      row.children[i].textContent = ''
+    }
+  })
+  wordToGuess = randomWord()
+  rows=0
+  letters=0
+  console.log(wordToGuess);
+}
+
 
 function handleClick(evt){
   console.log(evt.target.id)
 }
-
-
 
 
 function randomWord() {
@@ -50,6 +63,11 @@ function realWord(word) {
       return true
   } 
 }
+
+
+
+
+
 // function toggleLightDark() {
 //   confetti.start(2000)
 //   body.className = body.className === "dark" ? "" : "dark"
@@ -64,4 +82,4 @@ function realWord(word) {
 //   }
 // }
 
-// // checkDarkPref()
+// checkDarkPref()
