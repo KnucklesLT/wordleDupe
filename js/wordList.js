@@ -5757,14 +5757,4 @@ const allWords = [
 "biffy",
 "pupal"]
     
-function randomWord() {
-    return allWords[Math.floor(Math.random() * allWords.length - 1)]
-}
-
-function realWord(word) {
-    if(allWords.includes(word)){
-        return true
-    } 
-}
-    
-    export {randomWord, realWord, allWords}
+export {allWords}

@@ -1,17 +1,17 @@
-import {allWords,randomWord, realWord} from './wordList.js'
+import {allWords} from './wordList.js'
 /*-------------------------------- Constants --------------------------------*/
-
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 /*-------------------------------- Variables --------------------------------*/
+let guessArr = []
+let guessWord
 
 
 
 /*------------------------ Cached Element References ------------------------*/
 
-
 const lightDarkBtn = document.querySelector("#light-dark-mode")
-
+const guessRows = document. querySelectorAll("div#guess-row-container")
 const keyboard = document.querySelector("#key-board-container")
 const resetBtn = document.querySelector("#resetBtn")
 /*----------------------------- Event Listeners -----------------------------*/
@@ -20,23 +20,36 @@ const resetBtn = document.querySelector("#resetBtn")
 // lightDarkBtn.addEventListener('click', toggleLightDark)
 
 keyboard.addEventListener('click', handleClick)
-
+document.addEventListener('keydown', (evt)=>{
+  if (guessArr.length < 5) {
+    guessArr.push(evt.key.toLowerCase())
+    console.log(evt.key);
+  }
+  if(guessArr.length === 5){
+    guessWord = guessArr.join('')
+    console.log(guessWord);
+  } 
+})
 /*-------------------------------- Functions --------------------------------*/
 
 // console.log(typeof wordList);
 
 function handleClick(evt){
-  console.log(evt.target.id);
+  console.log(evt.target.id)
 }
 
 
-console.log(allWords[Math.floor(Math.random()* allWords.length - 1)]);
 
 
+function randomWord() {
+  return allWords[Math.floor(Math.random() * allWords.length - 1)]
+}
 
-
-
-
+function realWord(word) {
+  if(allWords.includes(word)){
+      return true
+  } 
+}
 // function toggleLightDark() {
 //   confetti.start(2000)
 //   body.className = body.className === "dark" ? "" : "dark"
