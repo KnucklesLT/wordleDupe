@@ -3,7 +3,7 @@ import {allWords} from './wordList.js'
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 /*-------------------------------- Variables --------------------------------*/
-let guessWord, wordToGuess, rows, letterColumn, guessArr
+let guessWord, wordToGuess, rows, letterColumn, guessArr, attempts
 
 
 
@@ -34,6 +34,7 @@ function init() {
     }
   })
   wordToGuess = getWordToGuess()
+  attempts = 0
   rows=0
   letterColumn=0
   guessArr = []
@@ -42,12 +43,20 @@ function init() {
 
 
 function handleClick(evt){
-  if((evt.target.id !== 'enter' || evt.target.id !== 'delete') && isLetter(evt.target.id))
-  console.log(evt.target.id)
+  if(evt.target.id === 'delete') deleteLetter()
 
+  if(isLetter(evt.target.id)){
+    if (guessArr.length < 5) {
+      guessArr.push(evt.target.id)
+      renderLetters(evt.target.id)
+      letterColumn++
+  }
+  }
 }
 
 function handleTyping(evt){
+  if(evt.key === 'Backspace' && guessArr.length > 0) deleteLetter()
+  
   if(isLetter(evt.key)){
     if (guessArr.length < 5) {
       guessArr.push(evt.key.toLowerCase())
@@ -56,7 +65,11 @@ function handleTyping(evt){
     }
     if(guessArr.length === 5){
       guessWord = guessArr.join('')
-      console.log(realWord(guessWord))
+      if(realWord(guessWord)) {
+        rows++
+        attempts++
+        compareWords()
+      }
     } 
   }
 }
@@ -72,10 +85,14 @@ function isLetter(letter){
 }
 
 function renderLetters(letter){
-  guessRows[rows].children[letterColumn].textContent = letter
+  guessRows[rows].children[letterColumn].textContent = letter.toUpperCase()
 }
 
-
+function deleteLetter(){
+  guessArr.pop()
+  letterColumn--
+  guessRows[rows].children[letterColumn].textContent = ''
+}
 
 
 function getWordToGuess() {
@@ -87,7 +104,13 @@ function realWord(word) {
 }
 
 
-
+function compareWords(){
+  for (let i = 0; i< wordToGuess.length; i++){
+    if(wordToGuess[i] === guessWord[i]){
+      guessRows[rows].children[i].style.backgroundColor = 'green'
+    }
+  }
+}
 
 
 // function toggleLightDark() {
