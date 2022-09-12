@@ -11,7 +11,7 @@ let guessWord, wordToGuess, rows, letterColumn, guessArr, attempts
 
 const lightDarkBtn = document.querySelector("#light-dark-mode")
 const guessRows = document. querySelectorAll("div#guess-row-container")
-const keyboard = document.querySelector("#key-board-container")
+const keyboard = document.querySelectorAll("#keyboard-rows > button")
 const resetBtn = document.querySelector("#resetButton")
 const boardMessage = document.getElementById('message')
 /*----------------------------- Event Listeners -----------------------------*/
@@ -20,19 +20,28 @@ const boardMessage = document.getElementById('message')
 // lightDarkBtn.addEventListener('click', toggleLightDark)
 resetBtn.addEventListener('click',init)
 
-keyboard.addEventListener('click', handleClick)
+keyboard.forEach((keys) => {
+  keys.addEventListener('click', handleClick)
+})
+
 
 document.addEventListener('keydown', handleTyping)
 /*-------------------------------- Functions --------------------------------*/
-
+console.log(keyboard);
 init()
 
 function init() {
   guessRows.forEach((row)=> {
     for (let i =0; i<5; i++){
       row.children[i].textContent = ''
+      row.children[i].style.backgroundColor = 'black'
     }
   })
+
+  keyboard.forEach((key)=>{
+    key.className = 'btn btn-secondary'
+  })
+
   wordToGuess = getWordToGuess()
   attempts = 0
   rows=0
@@ -50,8 +59,16 @@ function handleClick(evt){
       guessArr.push(evt.target.id)
       renderLetters(evt.target.id)
       letterColumn++
+    }
   }
-  }
+  if(guessArr.length === 5){
+    guessWord = guessArr.join('')
+    if(realWord(guessWord)) {
+      compareWords()
+      rows++
+      attempts++
+    }
+  } 
 }
 
 function handleTyping(evt){
@@ -66,9 +83,9 @@ function handleTyping(evt){
     if(guessArr.length === 5){
       guessWord = guessArr.join('')
       if(realWord(guessWord)) {
+        compareWords()
         rows++
         attempts++
-        compareWords()
       }
     } 
   }
@@ -78,7 +95,7 @@ function isLetter(letter){
   if(alphabet.includes(letter.toLowerCase())){
     return true
   } else {
-    boardMessage.textContent = "Please enter letters"
+    // boardMessage.textContent = "Please enter letters"
     boardMessage.classList.add('animate__animated', 'animate__shakeX')
   }
   
@@ -108,6 +125,12 @@ function compareWords(){
   for (let i = 0; i< wordToGuess.length; i++){
     if(wordToGuess[i] === guessWord[i]){
       guessRows[rows].children[i].style.backgroundColor = 'green'
+      
+      document.querySelector(`#${wordToGuess[i]}`).classList.remove('btn-secondary')
+      document.querySelector(`#${wordToGuess[i]}`).classList.add('btn-success')
+
+    } else if (wordToGuess.includes(guessWord[i])){
+      guessRows[rows].children[i].style.backgroundColor = '#FFD300'
     }
   }
 }
