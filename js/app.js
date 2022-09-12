@@ -3,8 +3,7 @@ import {allWords} from './wordList.js'
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 /*-------------------------------- Variables --------------------------------*/
-let guessArr = []
-let guessWord, wordToGuess, rows, letters
+let guessWord, wordToGuess, rows, numLetters, guessArr
 
 
 
@@ -22,39 +21,46 @@ resetBtn.addEventListener('click',init)
 
 keyboard.addEventListener('click', handleClick)
 
-document.addEventListener('keydown', (evt)=>{
-  if (guessArr.length < 5) {
-    guessArr.push(evt.key.toLowerCase())
-    console.log(evt.key);
-  }
-  if(guessArr.length === 5){
-    guessWord = guessArr.join('')
-    console.log(guessWord);
-  } 
-})
+document.addEventListener('keydown', handleTyping)
 /*-------------------------------- Functions --------------------------------*/
 
 init()
 
 function init() {
-  guessRows.forEach((row,idx)=> {
+  guessRows.forEach((row)=> {
     for (let i =0; i<5; i++){
       row.children[i].textContent = ''
     }
   })
-  wordToGuess = randomWord()
+  wordToGuess = getWordToGuess()
   rows=0
-  letters=0
+  numLetters=0
+  guessArr = []
   console.log(wordToGuess);
 }
 
 
 function handleClick(evt){
+  if(alphabet.includes(evt.target.id))
   console.log(evt.target.id)
+
 }
 
+function handleTyping(evt){
+  if(alphabet.includes(evt.key.toLowerCase())){
 
-function randomWord() {
+    if (guessArr.length < 5) {
+      guessArr.push(evt.key.toLowerCase())
+      console.log(evt.key);
+    }
+    if(guessArr.length === 5){
+      guessWord = guessArr.join('')
+      console.log(guessWord);
+    } 
+  }
+}
+
+function getWordToGuess() {
   return allWords[Math.floor(Math.random() * allWords.length - 1)]
 }
 
