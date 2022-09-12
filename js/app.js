@@ -3,7 +3,7 @@ import {allWords} from './wordList.js'
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 /*-------------------------------- Variables --------------------------------*/
-let guessWord, wordToGuess, rows, numLetters, guessArr
+let guessWord, wordToGuess, rows, letterColumn, guessArr
 
 
 
@@ -35,7 +35,7 @@ function init() {
   })
   wordToGuess = getWordToGuess()
   rows=0
-  numLetters=0
+  letterColumn=0
   guessArr = []
   console.log(wordToGuess);
 }
@@ -49,14 +49,14 @@ function handleClick(evt){
 
 function handleTyping(evt){
   if(isLetter(evt.key)){
-
     if (guessArr.length < 5) {
       guessArr.push(evt.key.toLowerCase())
-      console.log(evt.key);
+      renderLetters(evt.key)
+      letterColumn++
     }
     if(guessArr.length === 5){
       guessWord = guessArr.join('')
-      console.log(guessWord);
+      console.log(realWord(guessWord))
     } 
   }
 }
@@ -71,7 +71,9 @@ function isLetter(letter){
   
 }
 
-
+function renderLetters(letter){
+  guessRows[rows].children[letterColumn].textContent = letter
+}
 
 
 
@@ -81,9 +83,7 @@ function getWordToGuess() {
 }
 
 function realWord(word) {
-  if(allWords.includes(word)){
-      return true
-  } 
+  return allWords.includes(word.toLowerCase())
 }
 
 
