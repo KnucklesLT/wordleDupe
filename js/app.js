@@ -28,6 +28,7 @@ keyboard.forEach((keys) => {
 
 init()
 
+
 function init() {
   document.addEventListener('keydown', handleTyping)
   guessRows.forEach((row)=> {
@@ -76,6 +77,7 @@ function handleClick(evt){
   } 
 }
 
+
 function handleTyping(evt){
   if(evt.key === 'Backspace' && guessArr.length > 0) deleteLetter()
   
@@ -98,6 +100,7 @@ function handleTyping(evt){
   }
 }
 
+
 function isLetter(letter){
   if(alphabet.includes(letter.toLowerCase())){
     return true
@@ -108,9 +111,11 @@ function isLetter(letter){
   
 }
 
+
 function renderLetters(letter){
   guessRows[rows].children[letterColumn].textContent = letter.toUpperCase()
 }
+
 
 function deleteLetter(){
   guessArr.pop()
@@ -143,6 +148,7 @@ function compareWords(){
   renderWinOrLoss()
 }
 
+
 function renderWinOrLoss(){
   if (wordToGuess === guessWord){
     confetti.start(2000)
@@ -164,13 +170,17 @@ function renderWinOrLoss(){
   }
 }
 
+
 function getWordToGuess() {
   return allWords[Math.floor(Math.random() * allWords.length - 1)]
 }
 
+
 function realWord(word) {
   return allWords.includes(word.toLowerCase())
 }
+
+
 // function toggleLightDark() {
 //   confetti.start(2000)
 //   body.className = body.className === "dark" ? "" : "dark"
