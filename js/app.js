@@ -95,6 +95,9 @@ function handleTyping(evt){
         attempts++
         letterColumn = 0
         guessArr = []
+      } else {
+        boardMessage.classList =''
+        guessRows[rows].children.classList = 'animate_animated animate__shakeX'
       }
     } 
   }
@@ -104,10 +107,10 @@ function handleTyping(evt){
 function isLetter(letter){
   if(alphabet.includes(letter.toLowerCase())){
     return true
-  } else {
-    // boardMessage.textContent = "Please enter letters"
-    boardMessage.classList.add('animate__animated', 'animate__shakeX')
-  }
+  } 
+  // else {
+  //  boardMessage.textContent = "Please enter letters"
+  // }
   
 }
 
@@ -135,10 +138,12 @@ function compareWords(){
       document.querySelector(`#${guessWord[i]}`).classList.add('btn','btn-success')
       
     } else if (wordToGuess.includes(guessWord[i])){
-      if(guessRows[rows].children[i].style.backgroundColor !== 'green') guessRows[rows].children[i].style.backgroundColor = '#FFD300'
+      if(!document.querySelector(`#${guessWord[i]}`).className.includes('btn-success')){ 
+        document.querySelector(`#${guessWord[i]}`).classList = ''
+        document.querySelector(`#${guessWord[i]}`).classList.add('btn','btn-warning')
+      }
+      guessRows[rows].children[i].style.backgroundColor = '#FFD300'
       guessRows[rows].children[i].classList= `animate__animated animate__flipInX animate__delay-${i}s`
-      document.querySelector(`#${guessWord[i]}`).classList = ''
-      document.querySelector(`#${guessWord[i]}`).classList.add('btn','btn-warning')
     } else {
       guessRows[rows].children[i].classList= `animate__animated animate__flipInX animate__delay-${i}s`
       document.querySelector(`#${guessWord[i]}`).classList = ''
@@ -157,11 +162,12 @@ function renderWinOrLoss(){
     // keyboard.
 
   } else if (attempts === 6 && wordToGuess !== guessWord){
-    boardMessage.textContent = 'Better Luck Next Time!'
+    boardMessage.textContent = `The word was '${wordToGuess}'. Better Luck Next Time!`
+    boardMessage.classList.add('animate__animated', 'animate__flipInX')
     guessRows.forEach((row)=> {
       for (let i =0; i<5; i++){
         row.children[i].style.setProperty('--animate-duration', '2s')
-        row.children[i].classList = 'share'
+        row.children[i].classList = ''
         row.children[i].classList = 'animate__animated animate__flipInY'
         row.children[i].textContent = ''
         row.children[i].style.backgroundColor = 'red'
