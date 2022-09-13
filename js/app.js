@@ -51,7 +51,7 @@ function init() {
   rows=0
   letterColumn=0
   guessArr = []
-  console.log(wordToGuess);
+  
 }
 
 

@@ -18,6 +18,9 @@ Pseudocode:
 Create Reset functionality!
 
 
+Link:
+https://luigis-wordle.netlify.app
+
 Credits
 word list:
 https://www-cs-faculty.stanford.edu/~knuth/sgb-words.txt
@@ -30,3 +33,4 @@ Animate.css
 
 Styling:
 getbootstrap.com
+
