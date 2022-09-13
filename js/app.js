@@ -45,7 +45,7 @@ function init() {
     }
   })
 
-  boardMessage.textContent = "Good Luck!"
+  boardMessage.textContent = "Let's get started!"
   wordToGuess = getWordToGuess()
   attempts = 1
   rows=0
