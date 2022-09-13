@@ -24,13 +24,12 @@ keyboard.forEach((keys) => {
   keys.addEventListener('click', handleClick)
 })
 
-
-document.addEventListener('keydown', handleTyping)
 /*-------------------------------- Functions --------------------------------*/
 
 init()
 
 function init() {
+  document.addEventListener('keydown', handleTyping)
   guessRows.forEach((row)=> {
     for (let i =0; i<5; i++){
       row.children[i].textContent = ''
@@ -121,8 +120,7 @@ function deleteLetter(){
 
 
 function compareWords(){
-  renderWinOrLoss()
-
+  
   for (let i = 0; i< wordToGuess.length; i++){
     if(wordToGuess[i] === guessWord[i]){
       guessRows[rows].children[i].classList= `animate__animated animate__flipInX animate__delay-${i}s`
@@ -132,27 +130,33 @@ function compareWords(){
       document.querySelector(`#${guessWord[i]}`).classList.add('btn','btn-success')
       
     } else if (wordToGuess.includes(guessWord[i])){
-      guessRows[rows].children[i].style.backgroundColor = '#FFD300'
+      if(guessRows[rows].children[i].style.backgroundColor !== 'green') guessRows[rows].children[i].style.backgroundColor = '#FFD300'
       guessRows[rows].children[i].classList= `animate__animated animate__flipInX animate__delay-${i}s`
-      document.querySelector(`#${guessWord[i]}`).classList.remove('btn-secondary')
-      document.querySelector(`#${guessWord[i]}`).classList.add('btn-warning')
+      document.querySelector(`#${guessWord[i]}`).classList = ''
+      document.querySelector(`#${guessWord[i]}`).classList.add('btn','btn-warning')
     } else {
       guessRows[rows].children[i].classList= `animate__animated animate__flipInX animate__delay-${i}s`
-      document.querySelector(`#${guessWord[i]}`).classList.remove('btn-secondary')
-      document.querySelector(`#${guessWord[i]}`).classList.add('btn-dark')
+      document.querySelector(`#${guessWord[i]}`).classList = ''
+      document.querySelector(`#${guessWord[i]}`).classList.add('btn','btn-dark')
     }
   }
+  renderWinOrLoss()
 }
 
 function renderWinOrLoss(){
   if (wordToGuess === guessWord){
     confetti.start(2000)
     boardMessage.textContent = attempts === 1 ? 'It took one attempt' : `It took ${attempts} attempts`
+    document.removeEventListener('keydown', handleTyping)
+    // keyboard.
 
   } else if (attempts === 6 && wordToGuess !== guessWord){
     boardMessage.textContent = 'Better Luck Next Time!'
     guessRows.forEach((row)=> {
       for (let i =0; i<5; i++){
+        row.children[i].style.setProperty('--animate-duration', '2s')
+        row.children[i].classList = 'share'
+        row.children[i].classList = 'animate__animated animate__flipInY'
         row.children[i].textContent = ''
         row.children[i].style.backgroundColor = 'red'
       }
