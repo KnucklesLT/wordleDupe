@@ -34,17 +34,28 @@ https://www-cs-faculty.stanford.edu/~knuth/sgb-words.txt
 
 Pseudocode:
 	1. Define variables used to track the state of the game and import the words from a JS file
+	
 	2. Store cached element references
+	
 	3. Loading the game should automatically select the word for the current game session, render the game, and player should immediately be able to start guessing words.
+	
 	4. Define required constants, i.g. wordOfDay, attemptCounter
+	
 	5. Handle player clicking letters and/or typing on the keyboard 😳
+	
 	6. Check if word player submitted is actually a word AND if the player entered actual letters 😳
+	
 	7. Change the color of the display tiles and keyboard depending on whether the letters are in the word
+	
 	8. Keep a counter for attempts and state whether the player failed or the attempts it took to get the right answer
+	
 	9. Create light/dark mode functionality
+	
 	10. ???
+	
 	11. Profit?
-  12. Create Reset functionality!
+	
+  	12. Create Reset functionality!
 
 Next Steps:
 1. light and dark mode
