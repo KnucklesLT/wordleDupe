@@ -33,6 +33,7 @@ https://www-cs-faculty.stanford.edu/~knuth/sgb-words.txt
 
 
 Pseudocode:
+	
 	1. Define variables used to track the state of the game and import the words from a JS file
 	
 	2. Store cached element references
