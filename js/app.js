@@ -44,14 +44,14 @@ function init() {
       key.className = 'btn btn-secondary'
     }
   })
-
+  document.querySelector('h1').textContent = "Luigi's Wordle"
   boardMessage.textContent = "Let's get started!"
   wordToGuess = getWordToGuess()
   attempts = 1
   rows=0
   letterColumn=0
   guessArr = []
-  
+  console.log(wordToGuess);
 }
 
 
@@ -155,13 +155,18 @@ function compareWords(){
 
 
 function renderWinOrLoss(){
+  if(attempts===4){
+    boardMessage.textContent = 'This is getting close! 😳'
+  }
   if (wordToGuess === guessWord){
     confetti.start(2000)
+    document.querySelector('h1').textContent = "Congratulations!"
     boardMessage.textContent = attempts === 1 ? 'It took one attempt' : `It took ${attempts} attempts`
     document.removeEventListener('keydown', handleTyping)
     // keyboard.
 
   } else if (attempts === 6 && wordToGuess !== guessWord){
+    document.querySelector('h1').textContent = "Sorry!"
     boardMessage.textContent = `The word was '${wordToGuess}'. Better Luck Next Time!`
     boardMessage.classList.add('animate__animated', 'animate__flipInX')
     guessRows.forEach((row)=> {
