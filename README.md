@@ -9,9 +9,11 @@ Planning Layout:
 ![Screen Shot 2022-09-09 at 1 15 11 PM](https://user-images.githubusercontent.com/111162028/189414600-c565b2f2-c41e-4844-870b-f53ceaa3bf5b.png)
 
 Win screen:
+
 Screen Shot 2022-09-14 at 3.48.39 PM.png
 
 Lose screen:
+
 Screen Shot 2022-09-14 at 3.59.16 PM.png
 
 Technology Implemented:
