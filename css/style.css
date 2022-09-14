@@ -9,8 +9,7 @@ body{
   align-items: center;
   margin: 20px;
   min-height: 100vh;
-  min-width: 100vw;
-  /* min-width: 100vw; */
+  width: 100%;
 }
 
 body.dark {
