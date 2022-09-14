@@ -1,7 +1,32 @@
-wordleDupe
+WordleDupe
+
+If you'd like to play:
+https://luigis-wordle.netlify.app
+
 Let me paint you a tale of my love for wordle. It was 2021 and we were a SOLID year and some change into the pandemic. Most of use were confined at home to be good people for our friends and family but the boredom was immense. Then like a shining beacon of mental hope came wordle, the (relatively) simple game of guessing a word and trying to guess the secret word based on the hints given from that first guess. What a dream, something for your mind to grab on to while the world continued its insanity. Thus, my love for wordle was born.
 
+Planning Layout:
 ![Screen Shot 2022-09-09 at 1 15 11 PM](https://user-images.githubusercontent.com/111162028/189414600-c565b2f2-c41e-4844-870b-f53ceaa3bf5b.png)
+
+Win screen:
+Screen Shot 2022-09-14 at 3.48.39 PM.png
+
+Lose screen:
+Screen Shot 2022-09-14 at 3.59.16 PM.png
+
+Technology Implemented:
+1. JavaScript
+2. CSS
+3. HTML
+4. Animate.CSS
+5. GetBootStrap.com
+6. confetti.js
+
+
+Credits
+word list:
+https://www-cs-faculty.stanford.edu/~knuth/sgb-words.txt
+
 
 Pseudocode:
 	1. Define variables used to track the state of the game and import the words from a JS file
@@ -15,22 +40,7 @@ Pseudocode:
 	9. Create light/dark mode functionality
 	10. ???
 	11. Profit?
-Create Reset functionality!
+  12. Create Reset functionality!
 
-
-Link:
-https://luigis-wordle.netlify.app
-
-Credits
-word list:
-https://www-cs-faculty.stanford.edu/~knuth/sgb-words.txt
-
-confetti:
-SEI Remote Github
-
-Animation:
-Animate.css
-
-Styling:
-getbootstrap.com
-
+Next Steps:
+1. light and dark mode
