@@ -10,11 +10,13 @@ Planning Layout:
 
 Win screen:
 
-Screen Shot 2022-09-14 at 3.48.39 PM.png
+![Screen Shot 2022-09-14 at 3 48 39 PM](https://user-images.githubusercontent.com/111162028/190251957-fb281d3c-8b66-4187-a45a-6a941cef37c8.png)
+
 
 Lose screen:
 
-Screen Shot 2022-09-14 at 3.59.16 PM.png
+![Screen Shot 2022-09-14 at 3 59 16 PM](https://user-images.githubusercontent.com/111162028/190251932-1708e5b6-16e6-4c3a-82c2-93c7efdec102.png)
+
 
 Technology Implemented:
 1. JavaScript
