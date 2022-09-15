@@ -33,6 +33,7 @@ init()
 
 function init() {
   document.addEventListener('keydown', handleTyping)
+  
   guessRows.forEach((row)=> {
     for (let i =0; i<5; i++){
       row.children[i].textContent = ''
@@ -42,6 +43,7 @@ function init() {
   })
 
   keyboard.forEach((key)=>{
+    key.disabled = false
     if (key.id !== 'delete' && key.id !== 'enter'){
       key.className = 'btn btn-secondary'
     }
@@ -166,14 +168,18 @@ function renderWinOrLoss(){
     document.querySelector('h1').textContent = "Congratulations!"
     boardMessage.textContent = attempts === 1 ? 'It took one attempt' : `It took ${attempts} attempts`
     document.removeEventListener('keydown', handleTyping)
-    rows = 7
     winSound.volume = .10
     winSound.play()
+
+    keyboard.forEach((key)=>{
+      key.disabled = true      
+    })
 
   } else if (attempts === 6 && wordToGuess !== guessWord){
     document.querySelector('h1').textContent = "Sorry!"
     boardMessage.textContent = `The word was '${wordToGuess}'. Better Luck Next Time!`
     boardMessage.classList.add('animate__animated', 'animate__flipInX')
+
     guessRows.forEach((row)=> {
       for (let i =0; i<5; i++){
         row.children[i].style.setProperty('--animate-duration', '2s')
