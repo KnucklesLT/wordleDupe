@@ -102,9 +102,6 @@ function isLetter(letter){
   if(alphabet.includes(letter.toLowerCase())){
     return true
   } 
-  // else {
-  //  boardMessage.textContent = "Please enter letters"
-  // }
   
 }
 
@@ -117,15 +114,18 @@ function proceed(){
   guessArr = []
 }
 
+
 function renderLetters(letter){
   guessRows[rows].children[letterColumn].textContent = letter.toUpperCase()
 }
 
 
 function deleteLetter(){
+  if(letterColumn > 0){
   guessArr.pop()
   letterColumn--
   guessRows[rows].children[letterColumn].textContent = ''
+  }
 }
 
 
