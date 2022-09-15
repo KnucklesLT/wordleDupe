@@ -171,9 +171,8 @@ function renderWinOrLoss(){
     winSound.volume = .10
     winSound.play()
 
-    keyboard.forEach((key)=>{
-      key.disabled = true      
-    })
+    disableKeyboard()
+    
 
   } else if (attempts === 6 && wordToGuess !== guessWord){
     document.querySelector('h1').textContent = "Sorry!"
@@ -190,11 +189,18 @@ function renderWinOrLoss(){
       }
     })
 
+    disableKeyboard()
+    
     lossSound.volume =.10
     lossSound.play()
   }
 }
 
+function disableKeyboard (){
+  keyboard.forEach((key)=>{
+    key.disabled = true      
+  })
+}
 
 function getWordToGuess() {
   return allWords[Math.floor(Math.random() * allWords.length - 1)]
