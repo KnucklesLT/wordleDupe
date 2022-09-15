@@ -70,11 +70,8 @@ function handleClick(evt){
   if(guessArr.length === 5 && evt.target.id === 'enter'){
     guessWord = guessArr.join('')
     if(realWord(guessWord)) {
-      compareWords()
-      rows++
-      attempts++
-      letterColumn=0
-      guessArr= []
+
+      proceed()
     }
   } 
 }
@@ -91,16 +88,11 @@ function handleTyping(evt){
     }
     if(guessArr.length === 5){
       guessWord = guessArr.join('')
+
       if(realWord(guessWord)) {
-        compareWords()
-        rows++
-        attempts++
-        letterColumn = 0
-        guessArr = []
-      } else {
-        boardMessage.classList =''
-        guessRows[rows].children.classList = 'animate_animated animate__shakeX'
-      }
+
+        proceed()
+      } 
     } 
   }
 }
@@ -116,6 +108,14 @@ function isLetter(letter){
   
 }
 
+
+function proceed(){
+  compareWords()
+  rows++
+  attempts++
+  letterColumn = 0
+  guessArr = []
+}
 
 function renderLetters(letter){
   guessRows[rows].children[letterColumn].textContent = letter.toUpperCase()
