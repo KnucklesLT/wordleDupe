@@ -14,6 +14,7 @@ const guessRows = document. querySelectorAll("div#guess-row-container")
 const keyboard = document.querySelectorAll("#keyboard-rows > button")
 const resetBtn = document.querySelector("#resetButton")
 const boardMessage = document.getElementById('message')
+const lossSound = new Audio("../audio/womp-womp.mp3")
 /*----------------------------- Event Listeners -----------------------------*/
 
 
@@ -178,6 +179,8 @@ function renderWinOrLoss(){
         row.children[i].style.backgroundColor = 'red'
       }
     })
+    lossSound.volume =.10
+    lossSound.play()
   }
 }
 
