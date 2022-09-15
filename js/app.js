@@ -1,7 +1,8 @@
 import {allWords} from './wordList.js'
 /*-------------------------------- Constants --------------------------------*/
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'
-
+const motivational =['You can do it!','Great guess!','I believe in you!','Keep going!','Weird guess, but I love it!', "Brilliant!", "You awe me!", 'Stupendous guess!',
+                      'Fantastic!', 'Incredible', "You're majestic!"]
 /*-------------------------------- Variables --------------------------------*/
 let guessWord, wordToGuess, rows, letterColumn, guessArr, attempts
 
@@ -51,6 +52,7 @@ function init() {
 
   document.querySelector('h1').textContent = "Luigi's Wordle"
   boardMessage.textContent = "Let's get started!"
+  boardMessage.className = ''
   wordToGuess = getWordToGuess()
   attempts = 1
   rows=0
@@ -219,5 +221,12 @@ function getWordToGuess() {
 
 
 function realWord(word) {
-  return allWords.includes(word.toLowerCase())
+  if (allWords.includes(word.toLowerCase())){
+    if (attempts!==4 || attempts !== 6) boardMessage.textContent = motivational[Math.floor(Math.random() * motivational.length - 1)]
+    boardMessage.className=''
+    return true
+  } else {
+    boardMessage.textContent = 'Not a real word!'
+    boardMessage.className = 'animate__animated animate__shakeX'
+  }
 }
