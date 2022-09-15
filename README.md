@@ -20,7 +20,7 @@ https://luigis-wordle.netlify.app
 ![Screen Shot 2022-09-14 at 3 59 16 PM](https://user-images.githubusercontent.com/111162028/190251932-1708e5b6-16e6-4c3a-82c2-93c7efdec102.png)
 
 
-Technology Implemented:
+## Technology Implemented:
 1. JavaScript
 2. CSS
 3. HTML
@@ -29,15 +29,17 @@ Technology Implemented:
 6. confetti.js
 
 
-Credits
+## Credits
 
-word list:
+### word list:
 
 https://www-cs-faculty.stanford.edu/~knuth/sgb-words.txt
 
-sounds:
+### sounds:
 
 https://orangefreesounds.com/womp-womp/
+
+https://orangefreesounds.com/crowd-cheering-and-applauding-sound-effect/
 
 
 ## Pseudocode:
@@ -64,5 +66,5 @@ https://orangefreesounds.com/womp-womp/
    
 	11. Create Reset functionality!
 
-Next Steps:
+## Next Steps: 
 1. light and dark mode
