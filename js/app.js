@@ -15,6 +15,7 @@ const keyboard = document.querySelectorAll("#keyboard-rows > button")
 const resetBtn = document.querySelector("#resetButton")
 const boardMessage = document.getElementById('message')
 const lossSound = new Audio("../audio/womp-womp.mp3")
+const winSound = new Audio("../audio/cheer.mp3")
 /*----------------------------- Event Listeners -----------------------------*/
 
 
@@ -159,12 +160,15 @@ function renderWinOrLoss(){
   if(attempts===4){
     boardMessage.textContent = 'This is getting close! 😳'
   }
+
   if (wordToGuess === guessWord){
     confetti.start(2000)
     document.querySelector('h1').textContent = "Congratulations!"
     boardMessage.textContent = attempts === 1 ? 'It took one attempt' : `It took ${attempts} attempts`
     document.removeEventListener('keydown', handleTyping)
-    // keyboard.
+    rows = 7
+    winSound.volume = .10
+    winSound.play()
 
   } else if (attempts === 6 && wordToGuess !== guessWord){
     document.querySelector('h1').textContent = "Sorry!"
@@ -179,6 +183,7 @@ function renderWinOrLoss(){
         row.children[i].style.backgroundColor = 'red'
       }
     })
+
     lossSound.volume =.10
     lossSound.play()
   }
@@ -193,20 +198,3 @@ function getWordToGuess() {
 function realWord(word) {
   return allWords.includes(word.toLowerCase())
 }
-
-
-// function toggleLightDark() {
-//   confetti.start(2000)
-//   body.className = body.className === "dark" ? "" : "dark"
-// }
-
-// function checkDarkPref() {
-//   if(
-//     window.matchMedia("(prefers-color-scheme:dark)").matches &&
-//     body.className !== "dark"
-//   ) {
-//     toggleLightDark()
-//   }
-// }
-
-// checkDarkPref()
