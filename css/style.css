@@ -2,6 +2,8 @@ html {
   width: 100%;
   min-height: 100%;
 }
+
+/* bones for light and dark mode*/
 body{
   --body-bg: white;
   --btn-text-color: black;

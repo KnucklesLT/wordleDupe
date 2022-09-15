@@ -133,28 +133,37 @@ function deleteLetter(){
 
 
 function compareWords(){
-  
+  let lettersInWord = wordToGuess
+
   for (let i = 0; i< wordToGuess.length; i++){
     if(wordToGuess[i] === guessWord[i]){
+      lettersInWord = lettersInWord.replace(guessWord[i],'')
       guessRows[rows].children[i].classList= `animate__animated animate__flipInX animate__delay-${i}s`
       guessRows[rows].children[i].style.backgroundColor = 'green'
       
       document.querySelector(`#${guessWord[i]}`).classList= ''
       document.querySelector(`#${guessWord[i]}`).classList.add('btn','btn-success')
       
-    } else if (wordToGuess.includes(guessWord[i])){
+    } else {
+      if(!document.querySelector(`#${guessWord[i]}`).className.includes('btn-success')){
+        document.querySelector(`#${guessWord[i]}`).classList = ''
+        document.querySelector(`#${guessWord[i]}`).classList.add('btn','btn-dark')
+      }
+      guessRows[rows].children[i].classList= `animate__animated animate__flipInX animate__delay-${i}s`
+    }
+
+  }
+  for (let i = 0; i< wordToGuess.length; i++){
+    if (lettersInWord.includes(guessWord[i]) && wordToGuess[i] !== guessWord[i]){
       if(!document.querySelector(`#${guessWord[i]}`).className.includes('btn-success')){ 
         document.querySelector(`#${guessWord[i]}`).classList = ''
         document.querySelector(`#${guessWord[i]}`).classList.add('btn','btn-warning')
       }
+      lettersInWord = lettersInWord.replace(guessWord[i],'')
       guessRows[rows].children[i].style.backgroundColor = '#FFD300'
       guessRows[rows].children[i].classList= `animate__animated animate__flipInX animate__delay-${i}s`
-    } else {
-      guessRows[rows].children[i].classList= `animate__animated animate__flipInX animate__delay-${i}s`
-      document.querySelector(`#${guessWord[i]}`).classList = ''
-      document.querySelector(`#${guessWord[i]}`).classList.add('btn','btn-dark')
     }
-  }
+}
   renderWinOrLoss()
 }
 
