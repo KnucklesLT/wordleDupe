@@ -9,7 +9,7 @@ let guessWord, wordToGuess, rows, letterColumn, guessArr, attempts
 
 /*------------------------ Cached Element References ------------------------*/
 
-const lightDarkBtn = document.querySelector("#light-dark-mode")
+// const lightDarkBtn = document.querySelector("#light-dark-mode")
 const guessRows = document. querySelectorAll("div#guess-row-container")
 const keyboard = document.querySelectorAll("#keyboard-rows > button")
 const resetBtn = document.querySelector("#resetButton")
@@ -48,6 +48,7 @@ function init() {
       key.className = 'btn btn-secondary'
     }
   })
+
   document.querySelector('h1').textContent = "Luigi's Wordle"
   boardMessage.textContent = "Let's get started!"
   wordToGuess = getWordToGuess()
@@ -55,7 +56,7 @@ function init() {
   rows=0
   letterColumn=0
   guessArr = []
-  console.log(wordToGuess);
+  console.log(wordToGuess)
 }
 
 
@@ -189,8 +190,9 @@ function renderWinOrLoss(){
       }
     })
 
+    document.removeEventListener('keydown', handleTyping)
     disableKeyboard()
-    
+
     lossSound.volume =.10
     lossSound.play()
   }

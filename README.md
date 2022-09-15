@@ -4,7 +4,7 @@
 Let me paint you a tale of my love for wordle. It was 2021 and we were a SOLID year and change into the pandemic. Most of us were confined at home to be good people for our friends and family but the boredom was immense. Then like a shining beacon of mental hope, came wordle, the (relatively) simple game of guessing a word and trying to guess the secret word based on the hints given from that first guess. The hints being, whether the letter tiles turned black (letter not in the word), yellow (letter in the word but wrong place), or green (letter in the word AND in the right place). What a dream, something for your mind to grab on to while the world continued its insanity. Thus, my love for wordle was born.
 
 ## If you'd like to play:
-https://luigis-wordle.netlify.app
+Give my rendition of [Wordle](https://luigis-wordle.netlify.app) a shot!
 
 
 ## Planning Layout:
@@ -68,3 +68,5 @@ https://orangefreesounds.com/crowd-cheering-and-applauding-sound-effect/
 
 ## Next Steps: 
 1. light and dark mode
+2. shake when user enters something that is not a word
+3. enable a hard mode where letters not in word cannot be clicked or typed again
