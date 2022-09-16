@@ -1,7 +1,7 @@
 ## WordleDupe
 
 
-Let me paint you a tale of my love for wordle. It was 2021 and we were a SOLID year and change into the pandemic. Most of us were confined at home to be good people for our friends and family but the boredom was immense. Then like a shining beacon of mental hope, came wordle, the (relatively) simple game of guessing a word and trying to guess the secret word based on the hints given from that first guess. 
+Let me paint you a tale of my love for wordle. It was 2021 and we were a SOLID year and change into the pandemic. Most of us were confined at home to be good people for our friends and family but the boredom was immense. Then like a shining beacon of mental hope, came wordle, the (relatively) simple game of guessing a five letter word and trying to guess the secret word based on the hints given from that first guess. 
 
 The hints being, 
 - whether the letter tiles turned black (letter not in the word)
