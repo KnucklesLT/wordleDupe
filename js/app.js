@@ -58,7 +58,6 @@ function init() {
   rows=0
   letterColumn=0
   guessArr = []
-  console.log(wordToGuess)
 }
 
 
@@ -222,7 +221,8 @@ function getWordToGuess() {
 
 function realWord(word) {
   if (allWords.includes(word.toLowerCase())){
-    if (attempts!==4 || attempts !== 6) boardMessage.textContent = motivational[Math.floor(Math.random() * motivational.length - 1)]
+    if (attempts!==4 || attempts !== 6) {
+      boardMessage.textContent = motivational[Math.floor(Math.random() * motivational.length - 1)]}
     boardMessage.className=''
     return true
   } else {
